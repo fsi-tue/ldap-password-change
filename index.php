@@ -185,8 +185,8 @@ $mailer->LE            = $mail_newline;
     <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css" />
     <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
     <link rel="stylesheet" type="text/css" href="css/self-service-password.css" />
-    <link href="images/favicon.ico" rel="icon" type="image/x-icon" />
-    <link href="images/favicon.ico" rel="shortcut icon" />
+    <link href="/lib/tpl/fsi/images/favicon.ico" rel="icon" type="image/x-icon" />
+    <link href="/lib/tpl/fsi/images/favicon.ico" rel="shortcut icon" />
 <?php if (isset($background_image)) { ?>
      <style>
        html, body {
@@ -229,6 +229,11 @@ $mailer->LE            = $mail_newline;
     }
 ?>
 
+<div style="text-align: center;">
+<a href="https://github.com/fsi-tue/ldap-password-change">Source Code</a>
+</div>
+
+
 </div>
 </div>
 
@@ -246,6 +251,7 @@ $mailer->LE            = $mail_newline;
         });
     });
 </script>
+
 </body>
 </html>
 <?php
