@@ -19,6 +19,10 @@
 #
 #==============================================================================
 
+require_once '/var/www/html/zxcvbn/vendor/autoload.php';
+
+use ZxcvbnPhp\Zxcvbn;
+
 # Create SSHA password
 function make_ssha_password($password) {
     $salt = random_bytes(4);
@@ -267,6 +271,15 @@ function check_password_strength( $password, $oldpassword, $pwd_policy_config, $
 
     # Same as login?
     if ( $pwd_diff_login and $password === $login ) { $result="sameaslogin"; }
+
+    $zxcvbn = new Zxcvbn();
+
+    $zxcvbn = $strong = $zxcvbn->passwordStrength($password);
+
+    if( $zxcvbn['score'] < 4 ){
+	$result = "pwned";
+
+    }
 	
 	# pwned?
 	if ($use_pwnedpasswords) {
