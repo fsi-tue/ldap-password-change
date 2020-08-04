@@ -31,17 +31,17 @@
 # Debug mode
 # true: log and display any errors or warnings (use this in configuration/testing)
 # false: log only errors and do not display them (use this in production)
-$debug = false;
+$debug = true;
 
 # LDAP
-$ldap_url = "ldap://localhost";
+$ldap_url = "ldaps://ldap.fsi.uni-tuebingen.de";
 $ldap_starttls = false;
-$ldap_binddn = "cn=manager,dc=example,dc=com";
-$ldap_bindpw = 'secret';
-$ldap_base = "dc=example,dc=com";
+$ldap_binddn = "";
+$ldap_bindpw = '';
+$ldap_base = "dc=fsi,dc=uni-tuebingen,dc=de";
 $ldap_login_attribute = "uid";
 $ldap_fullname_attribute = "cn";
-$ldap_filter = "(&(objectClass=person)($ldap_login_attribute={login}))";
+$ldap_filter = "(&($ldap_login_attribute={login})(objectclass=posixAccount)(!(loginShell=/usr/sbin/nologin)))";
 
 # Active Directory mode
 # true: use unicodePwd as password field
@@ -65,7 +65,7 @@ $samba_mode = false;
 
 # Shadow options - require shadowAccount objectClass
 # Update shadowLastChange
-$shadow_options['update_shadowLastChange'] = false;
+$shadow_options['update_shadowLastChange'] = true;
 $shadow_options['update_shadowExpire'] = false;
 
 # Default to -1, never expire
@@ -80,7 +80,7 @@ $shadow_options['shadow_expire_days'] = -1;
 # clear (the default)
 # auto (will check the hash of current password)
 # This option is not used with ad_mode = true
-$hash = "clear";
+$hash = "SSHA";
 
 # Prefix to use for salt with CRYPT
 $hash_options['crypt_salt_prefix'] = "$6$";
@@ -89,34 +89,34 @@ $hash_options['crypt_salt_length'] = "6";
 # Local password policy
 # This is applied before directory password policy
 # Minimal length
-$pwd_min_length = 0;
+$pwd_min_length = 12;
 # Maximal length
 $pwd_max_length = 0;
 # Minimal lower characters
-$pwd_min_lower = 0;
+$pwd_min_lower = 3;
 # Minimal upper characters
-$pwd_min_upper = 0;
+$pwd_min_upper = 2;
 # Minimal digit characters
-$pwd_min_digit = 0;
+$pwd_min_digit = 1;
 # Minimal special characters
-$pwd_min_special = 0;
+$pwd_min_special = 1;
 # Definition of special characters
 $pwd_special_chars = "^a-zA-Z0-9";
 # Forbidden characters
 #$pwd_forbidden_chars = "@%";
 # Don't reuse the same password as currently
-$pwd_no_reuse = true;
+$pwd_no_reuse = false;
 # Check that password is different than login
 $pwd_diff_login = true;
 # Complexity: number of different class of character required
-$pwd_complexity = 0;
+$pwd_complexity = 2;
 # use pwnedpasswords api v2 to securely check if the password has been on a leak
-$use_pwnedpasswords = false;
+$use_pwnedpasswords = true;
 # Show policy constraints message:
 # always
 # never
 # onerror
-$pwd_show_policy = "never";
+$pwd_show_policy = "always";
 # Position of password policy constraints message:
 # above - the form
 # below - the form
@@ -157,7 +157,7 @@ $notify_on_sshkey_change = false;
 
 ## Questions/answers
 # Use questions/answers?
-$use_questions = true;
+$use_questions = false;
 # Allow to register more than one answer?
 $multiple_answers = false;
 
@@ -175,7 +175,7 @@ $crypt_answers = true;
 # Use tokens?
 # true (default)
 # false
-$use_tokens = true;
+$use_tokens = false;
 # Crypt tokens?
 # true (default)
 # false
@@ -191,25 +191,25 @@ $mail_attribute = "mail";
 # default = false
 $mail_address_use_ldap = false;
 # Who the email should come from
-$mail_from = "admin@example.com";
-$mail_from_name = "Self Service Password";
+$mail_from = "password-change@fsi.uni-tuebingen.de";
+$mail_from_name = "fsi Account Passwortänderung";
 $mail_signature = "";
 # Notify users anytime their password is changed
-$notify_on_change = false;
+$notify_on_change = true;
 # PHPMailer configuration (see https://github.com/PHPMailer/PHPMailer)
 $mail_sendmailpath = '/usr/sbin/sendmail';
 $mail_protocol = 'smtp';
 $mail_smtp_debug = 0;
 $mail_debug_format = 'error_log';
-$mail_smtp_host = 'localhost';
+$mail_smtp_host = '192.168.134.54';
 $mail_smtp_auth = false;
 $mail_smtp_user = '';
 $mail_smtp_pass = '';
 $mail_smtp_port = 25;
 $mail_smtp_timeout = 30;
 $mail_smtp_keepalive = false;
-$mail_smtp_secure = 'tls';
-$mail_smtp_autotls = true;
+$mail_smtp_secure = '';
+$mail_smtp_autotls = false;
 $mail_smtp_options = array();
 $mail_contenttype = 'text/plain';
 $mail_wordwrap = 0;
@@ -219,7 +219,7 @@ $mail_newline = PHP_EOL;
 
 ## SMS
 # Use sms
-$use_sms = true;
+$use_sms = false;
 # SMS method (mail, api)
 $sms_method = "mail";
 $sms_api_lib = "lib/smsapi.inc.php";
@@ -246,7 +246,8 @@ $max_attempts = 3;
 # Encryption, decryption keyphrase, required if $crypt_tokens = true
 # Please change it to anything long, random and complicated, you do not have to remember it
 # Changing it will also invalidate all previous tokens and SMS codes
-$keyphrase = "secret";
+# this can be public since we don't use it
+$keyphrase = "gi6biwx5uydyk9kobg86435yye76adx2";
 
 # Reset URL (if behind a reverse proxy)
 #$reset_url = $_SERVER['HTTP_X_FORWARDED_PROTO'] . "://" . $_SERVER['HTTP_X_FORWARDED_HOST'] . $_SERVER['SCRIPT_NAME'];
@@ -255,17 +256,17 @@ $keyphrase = "secret";
 $show_help = true;
 
 # Default language
-$lang = "en";
+$lang = "de";
 
 # List of authorized languages. If empty, all language are allowed.
 # If not empty and the user's browser language setting is not in that list, language from $lang will be used.
-$allowed_lang = array();
+$allowed_lang = array('de');
 
 # Display menu on top
 $show_menu = true;
 
 # Logo
-$logo = "images/ltb-logo.png";
+$logo = "https://www.fsi.uni-tuebingen.de//img/logo.png";
 
 # Background image
 $background_image = "images/unsplash-space.jpeg";
