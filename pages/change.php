@@ -334,7 +334,8 @@ if ($pwd_show_policy_pos === 'above') {
 			res = zxcvbn(this.value);
 			document.getElementById("zxcvbnScore").innerHTML = res.score;
 			document.getElementById("zxcvbnWarning").innerHTML = res.feedback.warning;
-			document.getElementById("zxcvbnSuggestions").innerHTML = res.feedback.suggestions;
+			suggestions = res.feedback.suggestions.toString().split(",").join("<br>");
+			document.getElementById("zxcvbnSuggestion").innerHTML = suggestions;
 		}
         </script>
 
