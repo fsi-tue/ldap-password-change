@@ -125,6 +125,9 @@ $pwd_show_policy_pos = "above";
 # disallow use of the only special character as defined in `$pwd_special_chars` at the beginning and end
 $pwd_no_special_at_ends = false;
 
+# required minimum Zxcvbn score
+$reqZxcvbnScore = 2;
+
 # Who changes the password?
 # Also applicable for question/answer save
 # user: the user itself
@@ -256,11 +259,11 @@ $keyphrase = "gi6biwx5uydyk9kobg86435yye76adx2";
 $show_help = true;
 
 # Default language
-$lang = "de";
+$lang = "en";
 
 # List of authorized languages. If empty, all language are allowed.
 # If not empty and the user's browser language setting is not in that list, language from $lang will be used.
-$allowed_lang = array('de');
+$allowed_lang = array('en');
 
 # Display menu on top
 $show_menu = true;

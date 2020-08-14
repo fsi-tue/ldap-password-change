@@ -196,6 +196,7 @@ function show_policy( $messages, $pwd_policy_config, $result ) {
     if ( $pwd_no_reuse        ) { echo "<li>".$messages["policynoreuse"]                                 ."\n"; }
     if ( $pwd_diff_login      ) { echo "<li>".$messages["policydifflogin"]                               ."\n"; }
     if ( $use_pwnedpasswords  ) { echo "<li>".$messages["policypwned"]                               ."\n"; }
+    if ( $reqZxcvbnScore      ) { echo "<li>". $messages["zxcvbnInfo"]          ." $reqZxcvbnScore </li>\n"; }
     if ( $pwd_no_special_at_ends  ) { echo "<li>".$messages["policyspecialatends"] ."</li>\n"; }
     echo "</ul>\n";
     echo "</div>\n";
@@ -276,7 +277,7 @@ function check_password_strength( $password, $oldpassword, $pwd_policy_config, $
 
     $zxcvbn = $strong = $zxcvbn->passwordStrength($password);
 
-    if( $zxcvbn['score'] < 4 ){
+    if( $zxcvbn['score'] < $reqZxcvbnScore ){
 	$result = "pwned";
 
     }
