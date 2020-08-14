@@ -284,6 +284,13 @@ if ($pwd_show_policy_pos === 'above') {
             </div>
         </div>
     </div>
+
+
+    <div class="form-group">
+        <div class="col-sm-offset-4 col-sm-8">
+            <input type="checkbox" onclick="togglePassword()"> Show Password <br>
+        </div>
+    </div>
 <?php if ($use_recaptcha) { ?>
     <div class="form-group">
         <div class="col-sm-offset-4 col-sm-8">
@@ -307,7 +314,24 @@ if ($pwd_show_policy_pos === 'below') {
     show_policy($messages, $pwd_policy_config, $result);
 }
 ?>
+<script>
+function togglePassword() {
+  var op = document.getElementById("oldpassword");
+  var np = document.getElementById("newpassword");
+  var cp = document.getElementById("confirmpassword");
+  if (np.type === "password") {
+    op.type = "text";
+    np.type = "text";
+    cp.type = "text";
+  } else {
+    op.type = "password";
+    np.type = "password";
+    cp.type = "password";
+  }
+}
 
+
+</script>
 <?php } else {
 
     # Notify password change
