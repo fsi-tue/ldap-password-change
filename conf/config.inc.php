@@ -93,13 +93,13 @@ $pwd_min_length = 12;
 # Maximal length
 $pwd_max_length = 0;
 # Minimal lower characters
-$pwd_min_lower = 3;
+$pwd_min_lower = 0;
 # Minimal upper characters
-$pwd_min_upper = 2;
+$pwd_min_upper = 0;
 # Minimal digit characters
-$pwd_min_digit = 1;
+$pwd_min_digit = 0;
 # Minimal special characters
-$pwd_min_special = 1;
+$pwd_min_special = 0;
 # Definition of special characters
 $pwd_special_chars = "^a-zA-Z0-9";
 # Forbidden characters
@@ -126,7 +126,7 @@ $pwd_show_policy_pos = "above";
 $pwd_no_special_at_ends = false;
 
 # required minimum Zxcvbn score
-$reqZxcvbnScore = 2;
+$reqZxcvbnScore = 3;
 
 # Who changes the password?
 # Also applicable for question/answer save
