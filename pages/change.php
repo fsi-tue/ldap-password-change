@@ -324,12 +324,23 @@ if ($pwd_show_policy_pos === 'above') {
 	<div class="form-group"> Password suggestions: <div id="zxcvbnSuggestion"> </div></div>
 
          <script>
+		reqZxcvbnScore = <?php echo $reqZxcvbnScore; ?>;
 		textField = document.getElementById("newpassword");
 		eventListener = textField.addEventListener('input', showZxcvbnInfo);
 
 		function showZxcvbnInfo(){
 			res = zxcvbn(this.value);
-			document.getElementById("zxcvbnScore").innerHTML = res.score;
+
+			if (res.score >= reqZxcvbnScore) {
+				// HTML checkmark
+				symbol = "&#10004;";
+			} else {
+				// HTML cross mark
+				symbol = "&#10060;";
+			}
+
+			document.getElementById("zxcvbnScore").innerHTML = res.score + " " + symbol;
+
 			document.getElementById("zxcvbnWarning").innerHTML = res.feedback.warning;
 			suggestions = res.feedback.suggestions.toString().split(",").join("<br>");
 			document.getElementById("zxcvbnSuggestion").innerHTML = suggestions;
