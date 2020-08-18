@@ -61,7 +61,7 @@ $messages['policyminspecial'] = "Minimum number of special characters:";
 $messages['forbiddenchars'] = "You password contains forbidden characters";
 $messages['policyforbiddenchars'] = "Forbidden characters:";
 $messages['policynoreuse'] = "Your new password may not be the same as your old password";
-$messages['zxcvbnInfo'] = "Do not hesitate to check below the required password complexity (with zxcvbn): >=";
+$messages['zxcvbnInfo'] = "Your password requires a minimum complexity. Do not hesitate to see if your new password fulfills the complexity, it will be computed automatically as you type your new password: >=";
 $messages['questions']['birthday'] = "When is your birthday?";
 $messages['questions']['color'] = "What is your favorite color?";
 $messages['password'] = "Password";
@@ -102,7 +102,7 @@ $messages['changesshkeymessage'] = "Hello {login},\n\nYour SSH Key has been chan
 $messages['changesshkeysubject'] = "Your SSH Key has been changed";
 $messages['badcaptcha'] = "The reCAPTCHA was not entered correctly. Try again.";
 $messages['notcomplex'] = "Your password does not have enough different classes of characters";
-$messages['policycomplex'] = "Minimum number of different classes of characters:";
+$messages['policycomplex'] = "Minimum number of different classes of characters (that means at least x of these classes: lowercase characters, uppercase characters, numbers, special characters. The minimum length must always be given!):";
 $messages['sms'] = "SMS number";
 $messages['smsresetmessage'] = "Your password reset token is:";
 $messages['sendsmshelp'] = "Enter your login to get password reset token. Then type token in sent SMS.";

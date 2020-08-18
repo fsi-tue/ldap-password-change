@@ -288,7 +288,7 @@ if ($pwd_show_policy_pos === 'above') {
 
     <div class="form-group">
         <div class="col-sm-offset-4 col-sm-8">
-            <input type="checkbox" onclick="togglePassword()"> Show Password <br>
+            <input type="checkbox" onclick="togglePassword()"> Show Passwords <br>
         </div>
     </div>
 <?php if ($use_recaptcha) { ?>
@@ -314,12 +314,9 @@ if ($pwd_show_policy_pos === 'above') {
     <div class="col-sm-offset-4 col-sm-8">
 	<div class="form-group">
 	Check here for the required Zxcvbn score of >= <?php echo $reqZxcvbnScore; ?><br>
-	This will only be computed on your device.<br>
+	The field "New Password" will be used for the check.<br>
 	</div>
         <script type="text/javascript" src="js/zxcvbn.js"></script>
-	<div class="form-group">
-	<input type="text" id="zxcvbnText" placeholder="Enter a string to check"><br>
-	</div>
 
 <div class="alert alert-warning">
 	<div class="form-group"> Password score: <div id="zxcvbnScore"> </div><br></div>
@@ -327,7 +324,7 @@ if ($pwd_show_policy_pos === 'above') {
 	<div class="form-group"> Password suggestions: <div id="zxcvbnSuggestion"> </div></div>
 
          <script>
-		textField = document.getElementById("zxcvbnText");
+		textField = document.getElementById("newpassword");
 		eventListener = textField.addEventListener('input', showZxcvbnInfo);
 
 		function showZxcvbnInfo(){
