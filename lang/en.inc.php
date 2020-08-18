@@ -61,6 +61,7 @@ $messages['policyminspecial'] = "Minimum number of special characters:";
 $messages['forbiddenchars'] = "You password contains forbidden characters";
 $messages['policyforbiddenchars'] = "Forbidden characters:";
 $messages['policynoreuse'] = "Your new password may not be the same as your old password";
+$messages['zxcvbn'] = "Your new password failed the minimum complexity check. Please check with the fields on the bottom of the site.";
 $messages['zxcvbnInfo'] = "Your password requires a minimum complexity. Do not hesitate to see if your new password fulfills the complexity, it will be computed automatically as you type your new password: >=";
 $messages['questions']['birthday'] = "When is your birthday?";
 $messages['questions']['color'] = "What is your favorite color?";

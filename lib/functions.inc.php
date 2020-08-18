@@ -148,7 +148,7 @@ function generate_sms_token( $sms_token_length ) {
 # Get message criticity
 function get_criticity( $msg ) {
 
-    if ( preg_match( "/nophpldap|phpupgraderequired|nophpmhash|nokeyphrase|ldaperror|nomatch|badcredentials|passworderror|tooshort|toobig|minlower|minupper|mindigit|minspecial|forbiddenchars|sameasold|answermoderror|answernomatch|mailnomatch|tokennotsent|tokennotvalid|notcomplex|smsnonumber|smscrypttokensrequired|nophpmbstring|nophpxml|smsnotsent|sameaslogin|pwned|sshkeyerror|specialatends/" , $msg ) ) {
+    if ( preg_match( "/nophpldap|phpupgraderequired|nophpmhash|nokeyphrase|ldaperror|nomatch|badcredentials|passworderror|tooshort|toobig|minlower|minupper|mindigit|minspecial|forbiddenchars|sameasold|answermoderror|answernomatch|mailnomatch|tokennotsent|tokennotvalid|notcomplex|smsnonumber|smscrypttokensrequired|nophpmbstring|nophpxml|smsnotsent|sameaslogin|pwned|zxcvbn|sshkeyerror|specialatends/" , $msg ) ) {
     return "danger";
     }
 
@@ -278,10 +278,9 @@ function check_password_strength( $password, $oldpassword, $pwd_policy_config, $
     $zxcvbn = $strong = $zxcvbn->passwordStrength($password);
 
     if( $zxcvbn['score'] < $reqZxcvbnScore ){
-	$result = "pwned";
+	$result = "zxcvbn";
 
-    }
-	
+    } else {
 	# pwned?
 	if ($use_pwnedpasswords) {
 		$pwned_passwords = new PwnedPasswords\PwnedPasswords;
@@ -290,6 +289,7 @@ function check_password_strength( $password, $oldpassword, $pwd_policy_config, $
 		
 		if($insecure) { $result="pwned"; }	
 	}
+    }
 
     return $result;
 }
