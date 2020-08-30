@@ -31,7 +31,7 @@
 # Debug mode
 # true: log and display any errors or warnings (use this in configuration/testing)
 # false: log only errors and do not display them (use this in production)
-$debug = true;
+$debug = false;
 
 # LDAP
 $ldap_url = "ldaps://ldap.fsi.uni-tuebingen.de";
