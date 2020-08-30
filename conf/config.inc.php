@@ -41,7 +41,15 @@ $ldap_bindpw = '';
 $ldap_base = "dc=fsi,dc=uni-tuebingen,dc=de";
 $ldap_login_attribute = "uid";
 $ldap_fullname_attribute = "cn";
-$ldap_filter = "(&($ldap_login_attribute={login})(objectclass=posixAccount)(!(loginShell=/usr/sbin/nologin)))";
+$ldapGroup = "ou=Group,$ldap_base";
+$ldap_allowed_groups_arr = array('fsi', 'fsk', 'toefl', 'admin', 'admin-trainee');
+$ldap_allowed_groups = "";
+
+foreach ($ldap_allowed_groups_arr as $group){
+    $ldap_allowed_groups .= "(memberof=cn=$group,$ldapGroup)";
+}
+
+$ldap_filter = "(&(|$ldap_allowed_groups)($ldap_login_attribute={login})(objectclass=posixAccount)(!(loginShell=/usr/sbin/nologin)))";
 
 # Active Directory mode
 # true: use unicodePwd as password field
