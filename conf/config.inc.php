@@ -97,7 +97,7 @@ $hash_options['crypt_salt_length'] = "6";
 # Local password policy
 # This is applied before directory password policy
 # Minimal length
-$pwd_min_length = 12;
+$pwd_min_length = 10;
 # Maximal length
 $pwd_max_length = 0;
 # Minimal lower characters
